@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body, html{
   height:100%;
 }
@@ -8,16 +12,31 @@ body{
   font-size: 18px;
   overflow: hidden;
 }
+
 body, a:link, a:visited, a:active{
-  color: lightblue;
+  color: white;
+  text-decoration: none;
+  font-family: 'Inconsolata', monospace;
+
 }
 .title, .addDancerButton{
-  padding:5px 12px;
+  padding:5px 15px;
   float:right;
 }
+
+.left {
+  padding: 5px 15px;
+}
+
+a:hover {
+  background: #fff;
+  color: #0f0;
+}
+
 .topbar{
   height:32px;
   background-color: #000;
+  margin: 10px;
 }
 .title{
   background-color: #777;
@@ -26,16 +45,123 @@ body, a:link, a:visited, a:active{
 .dancer {
   background-position: contain;
   width: 100px;
-  height: 100px;
   position: absolute;
 }
 
 .blinky{
   background: url("https://cdn57.androidauthority.net/wp-content/uploads/2015/08/marshmallow.png") no-repeat;
   background-size: 100% 100%;
+  height: 100px;
 }
 
 .bouncy{
-  background: url("https://fullmetallinux.files.wordpress.com/2012/01/512px-android_robot-svg.png") no-repeat;
+  background: url("https://vignette.wikia.nocookie.net/logopedia/images/e/ea/Android_5.0.png/revision/latest?cb=20150607025024") no-repeat;
   background-size: 100% 100%;
+  height: 150px;
+  animation: bounce 1s infinite alternate;
+  -webkit-animation: bounce is 1s infinite alternate;
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(2000px);
+  }
+  to {
+    transform: translateY(-500px);
+  }
+}
+
+@-webkit-keyframes bounce {
+  from {
+    transform: translateY(2000px);
+  }
+  to {
+    transform: translateY(-500px);
+  }
+}
+
+.flyer{
+  background: url("https://techotalksblog.files.wordpress.com/2017/09/3-fast.png?w=845");
+  background-size: 100% 100%;
+  height: 85px;
+  animation: fly 2s infinite;
+  -webkit-animation: fly is 2s infinite;
+}
+
+@keyframes fly {
+  from {
+    transform: translate(1920px, 1000px);
+  }
+  to {
+    transform: translate(-100px, 0);
+  }
+}
+
+@-webkit-keyframes fly {
+  from {
+    transform: translate(1920px, 1000px);
+  }
+  to {
+    transform: translate(-100px, 0);
+  }
+}
+
+.rotate {
+  animation: rotate 1s infinite;
+  -webkit-animation: rotate is 1s infinite;
+}
+
+.flip {
+  transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.zoom {
+  transition: transform 1s;
+  animation: zoom 1s infinite;
+  -webkit-animation: rotate is 1s infinite;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
+}
+
+@-webkit-keyframes zoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.5);
+  }
+}
+
+.glow {
+  -webkit-filter: drop-shadow(0px 0px 5px #fff);
+  filter: drop-shadow(0px 0px 10px #fff);
+  -webkit-transform: perspective(1px) translateZ(0);
+  -ms-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
 }
