@@ -3,8 +3,10 @@ body, html{
 }
 body{
   margin: 0px;
-  background-color:#444;
+  background-image: url("https://media.giphy.com/media/WoD6JZnwap6s8/giphy.gif");
+  background-color:#fff;
   font-size: 18px;
+  overflow: hidden;
 }
 body, a:link, a:visited, a:active{
   color: lightblue;
@@ -15,13 +17,25 @@ body, a:link, a:visited, a:active{
 }
 .topbar{
   height:32px;
-  background-color: #555;
+  background-color: #000;
 }
 .title{
   background-color: #777;
 }
-.dancer{
-  border:10px solid red;
-  border-radius:10px;
-  position:absolute;
+
+.dancer {
+  background-position: contain;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+}
+
+.blinky{
+  background: url("https://cdn57.androidauthority.net/wp-content/uploads/2015/08/marshmallow.png") no-repeat;
+  background-size: 100% 100%;
+}
+
+.bouncy{
+  background: url("https://fullmetallinux.files.wordpress.com/2012/01/512px-android_robot-svg.png") no-repeat;
+  background-size: 100% 100%;
 }
