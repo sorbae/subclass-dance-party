@@ -108,12 +108,7 @@ a:hover {
 
 .rotate {
   animation: rotate 1s infinite;
-  -webkit-animation: rotate is 1s infinite;
-}
-
-.flip {
-  transform: scaleX(-1);
-  -webkit-transform: scaleX(-1);
+  -webkit-animation: rotate 1s infinite;
 }
 
 @keyframes rotate {
@@ -131,6 +126,29 @@ a:hover {
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.flip {
+  animation: flip 1s infinite;
+  -webkit-animation: flip 1s infinite;
+}
+
+@keyframes flip {
+  from {
+    transform: scaleX(-1);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@-webkit-keyframes flip {
+  from {
+    transform: scaleX(-1);;
+  }
+  to {
+    transform: scaleX(1);
   }
 }
 
