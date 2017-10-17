@@ -1,5 +1,39 @@
 $(document).ready(function() {
   window.dancers = [];
+  
+  var addLineUpMethod = function(className, method, xOffSet, yOffSet) {
+    window.dancers.forEach(function(dancer) {
+      xOffSet = xOffSet || 0;
+      yOffSet = yOffSet || 0;
+      if (dancer.$node.hasClass(className)) {
+        dancer.setPosition(100 + xOffSet, 70 + yOffSet);
+        dancer.$node.addClass(method);
+        xOffSet += 50;
+        yOffSet += 50;
+      }
+    });
+  };
+  
+  $('.lineUp').on('click', function(event) {
+    addLineUpMethod('blinky', 'zoom', 100, 100);
+    addLineUpMethod('bouncy', 'rotate', 100, 400);
+    addLineUpMethod('flyer', 'glow', 100, 800);
+
+  });
+  
+  $('.shuffle').on('click', function(event) {
+    window.dancers.forEach(function(dancer) {
+      dancer.setPosition($("body").height() * Math.random(), $("body").width() * Math.random(), Math.random() * 1000);
+      dancer.$node.removeClass('zoom');
+      dancer.$node.removeClass('rotate');
+      dancer.$node.removeClass('glow');
+    });
+  });
+  
+
+  $('body').on('mouseover', 'span', function(event) {
+    $(this).toggleClass('flip');
+  });
 
   $('.addDancerButton').on('click', function(event) {
     /* This function sets up the click handlers for the create-dancer
