@@ -13,7 +13,43 @@ $(document).ready(function() {
       }
     });
   };
+
+  // var findCollisions = function(dancers) {
+  //   var positions = dancers.forEach(function(dancer) {
+  //     return [window.dancers[i].top, window.dancers[i].left];
+  //   });
+  //   var collisions = positions.filter(function(dancer) {
+      
+  //   });
+  // };
   
+  var findCollisions = function() {
+    setTimeout(function() {
+      findCollisions();
+    }, 10);
+    window.dancers.forEach(function(firstDancer) {
+      let dancer1X = firstDancer.$node.position().top;
+      let dancer1Y = firstDancer.$node.position().left;
+      console.log(dancer1X, dancer1Y);
+      window.dancers.forEach(function(secondDancer) {
+        let dancer2X = secondDancer.$node.position().top;
+        let dancer2Y = secondDancer.$node.position().left;
+        let distX = dancer2X - dancer1X;
+        let distY = dancer2Y - dancer2Y;
+        let distanceBetween = Math.sqrt(Math.pow(distX, 2) + Math.pow(distY, 2));
+        if (distanceBetween < 100) {
+          console.log(true);
+          return true;
+        }
+      });
+    });
+    console.log(false);
+    return false;
+  };
+
+  findCollisions();
+  
+
   $('.lineUp').on('click', function(event) {
     addLineUpMethod('blinky', 'zoom', 100, 100);
     addLineUpMethod('bouncy', 'rotate', 100, 400);
