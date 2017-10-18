@@ -13,42 +13,44 @@ $(document).ready(function() {
       }
     });
   };
-
-  // var findCollisions = function(dancers) {
-  //   var positions = dancers.forEach(function(dancer) {
-  //     return [window.dancers[i].top, window.dancers[i].left];
-  //   });
-  //   var collisions = positions.filter(function(dancer) {
-      
-  //   });
-  // };
   
   var findCollisions = function() {
-    setTimeout(function() {
-      findCollisions();
-    }, 10);
-    window.dancers.forEach(function(firstDancer) {
+    window.dancers.forEach(function(firstDancer, index1) {
       let dancer1X = firstDancer.$node.position().top;
       let dancer1Y = firstDancer.$node.position().left;
-      console.log(dancer1X, dancer1Y);
-      window.dancers.forEach(function(secondDancer) {
-        let dancer2X = secondDancer.$node.position().top;
-        let dancer2Y = secondDancer.$node.position().left;
-        let distX = dancer2X - dancer1X;
-        let distY = dancer2Y - dancer2Y;
-        let distanceBetween = Math.sqrt(Math.pow(distX, 2) + Math.pow(distY, 2));
-        if (distanceBetween < 100) {
-          console.log(true);
-          return true;
+      window.dancers.forEach(function(secondDancer, index2) {
+        if (index1 !== index2) {
+          let dancer2X = secondDancer.$node.position().top;
+          let dancer2Y = secondDancer.$node.position().left;
+          let distX = dancer2X - dancer1X;
+          let distY = dancer2Y - dancer2Y;
+          let distanceBetween = Math.sqrt(Math.pow(distX, 2) + Math.pow(distY, 2));
+          if (distanceBetween < 100) {
+            firstDancer.$node.addClass('apple');
+            secondDancer.$node.addClass('apple');
+          }
         }
       });
     });
-    console.log(false);
-    return false;
   };
 
-  findCollisions();
   
+
+  $('.findCollision').on('click', function(event) {
+    findCollisions();
+  });
+
+  $('.removeApples').on('click', function(event) {
+    window.dancers.forEach(function(dancer) {
+      dancer.$node.removeClass('apple');
+    });
+  });
+
+  $('glitch').on('click', function(event) {
+    window.dancers.forEach(function(dancer) {
+      dancer.$node.addClass('glitch');
+    });
+  });
 
   $('.lineUp').on('click', function(event) {
     addLineUpMethod('blinky', 'zoom', 100, 100);
